@@ -15,6 +15,14 @@
 - **📊 Real-time Dashboard**: Track your "Risk Score" over time on our HQ Dashboard.
 - **🛡️ Viral Badge**: Show off your code safety with a dynamic README badge.
 
+## 🆚 Why Supervisor?
+
+| Feature | Supervisor (Open Source) | Typical SaaS Auditor |
+| :--- | :--- | :--- |
+| **Privacy** | **Code STAYS on GitHub** (Redacted Logs) | Sends code to 3rd-party servers |
+| **Cost** | **$0.00 / user** (BYO API Key) | $20 - $40 / user / month |
+| **Control** | **You own the infra** (Action Runner) | You trust their black box |
+
 ## 📦 Usage
 
 Add this to your `.github/workflows/audit.yml`:
