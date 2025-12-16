@@ -1,0 +1,26 @@
+name: 'Supervisor Audit'
+description: 'Audits your PRs for AI hallucinations and security risks.'
+inputs:
+  openai_api_key:
+    description: 'Your OpenAI API Key'
+    required: true
+  github_token:
+    description: 'GitHub Token to post comments'
+    required: true
+  supervisor_hq_url:
+    description: 'Supervisor Headquarters URL'
+    required: false
+  supervisor_secret:
+    description: 'Shared Secret for Supervisor HQ'
+    required: false
+    
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    OPENAI_API_KEY: ${{ inputs.openai_api_key }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}
+    SUPERVISOR_HQ_URL: ${{ inputs.supervisor_hq_url }}
+    HQ_SECRET: ${{ inputs.supervisor_secret }}
+    # GitHub sets these automatically
+    PR_NUMBER: ${{ github.event.pull_request.number }}
