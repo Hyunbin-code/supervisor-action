@@ -140,8 +140,8 @@ def main():
                 "actor": pr.user.login,
                 "is_safe": risk_score < 50,
                 "risk_score": risk_score,
-                "issues": result.get("issues"),
-                "full_report": result
+                # Privacy: Send sanitized issues (no code snippets) to HQ
+                "issues": [{k: v for k, v in i.items() if k != 'line'} for i in result.get("issues", [])]
             }
             headers = {"x-supervisor-secret": HQ_SECRET}
             res = requests.post(SUPERVISOR_HQ_URL, json=payload, headers=headers, timeout=5)
